@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             url: '/administrative_panel/vendor/datatables/lang/es-ES.json'
         },
         responsive: true,
-        pageLength: 10,
+        pageLength: 5,
         lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
         ordering: true,
         order: [[0, 'asc']],

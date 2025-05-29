@@ -921,6 +921,14 @@ hr {
     background-color: rgba(0, 0, 0, 0.075);
 }
 
+div.dt-container .dt-paging .dt-paging-button:hover {
+    color: var(--text-color) !important;
+    background: none !important;
+    border: 1px solid var(--border-color) !important;
+    background-color: var(--primary-hover) !important;
+    transition: all var(--time-transition) ease;
+}
+
 /*Utilidades de espaciado*/
 /* Margen */
 .m-0 {
