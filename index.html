@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel</title>
+    <meta name="description" content="Panel de administración para gestionar usuarios, productos y más.">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="vendor/datatables/datatables.min.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="first-group-buttons">
+                <div class="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <div class="header-brand">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                        class="bi bi-truck" viewBox="0 0 16 16">
+                        <path
+                            d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A2 2 0 0 1 4.732 11h5.536a2 2 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2" />
+                    </svg>
+                </i>
+                <h2>Panel</h2>
+            </div>
+            <div class="group-buttons">
+                <div class="second-group-buttons">
+                    <div class="submenu-toggle" id="toggleSidebar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#fff"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                            <path d="M9 3v18M17 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="third-group-buttons">
+                    <div class="bell-menu">
+                        <div class="bell-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                            </svg>
+                        </div>
+                        <div class="dropdown-bell zoomIn">
+                            <div class="title-dropdown">
+                                <h4>Notificaciones</h4>
+                            </div>
+                            <div class="main-dropdown">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <p>00/00/0000 00:00</p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+                                            repellendus maxime.
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="footer-dropdown">
+                                <a>Ver todas las notificaciones</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-menu">
+                        <div class="user-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                            </svg>
+                        </div>
+                        <div class="dropdown-user zoomIn">
+                            <div class="title-dropdown">
+                                <div class="profile-image">
+                                    <img src="assets/img/sin_perfil.jpg" alt="Sin imagen">
+                                </div>
+                                <div class="profile-group">
+                                    <p>
+                                        Nombre y Apellido
+                                    </p>
+                                    <p>
+                                        Rol/Cargo
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="main-dropdown">
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                        class="bi bi-person-gear" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0" />
+                                    </svg>
+                                    Administrar Perfil
+                                </a>
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                        class="bi bi-gear" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+                                        <path
+                                            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+                                    </svg>
+                                    Configuración
+                                </a>
+                                <hr>
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                        class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                                        <path fill-rule="evenodd"
+                                            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+                                    </svg>
+                                    Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h2>Panel</h2>
+            <button class="btn-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" stroke="currentColor" stroke-width="2"
+                    fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path
+                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                </svg>
+            </button>
+        </div>
+        <ul class="sidebar-content">
+            <li class="mt-3">
+                <a href="#">
+                    <div class="content-link">
+                        <i class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-house-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                            </svg>
+                        </i>
+                        Inicio
+                    </div>
+                    <i class="selected">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path
+                                d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                        </svg>
+                    </i>
+                </a>
+            </li>
+            <hr>
+            <li>
+                <a href="#">
+                    <div class="content-link">
+                        <i class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-box" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z" />
+                            </svg>
+                        </i>
+                        Productos
+                    </div>
+                    <i class="selected">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path
+                                d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                        </svg>
+                    </i>
+                </a>
+            </li>
+            <hr>
+            <li>
+                <a href="#" class="active">
+                    <div class="content-link">
+                        <i class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-people-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                            </svg>
+                        </i>
+                        Usuarios
+                    </div>
+                    <i class="selected">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path
+                                d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                        </svg>
+                    </i>
+                </a>
+            </li>
+            <hr>
+            <li>
+                <a href="#" class="active-submenu">
+                    <div class="content-link">
+                        <i class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                viewBox="0 0 800 590.21">
+                                <path
+                                    d="M53.33,573.33v53.34c0,7,6.35,13.33,13.34,13.33H248.35l-30.86,30c-12.8,13.25,7.47,30.85,18.35,19.2l53.33-53.33c5.15-5,5.15-14.24,0-19.2l-53.33-53.34c-10.59-10.58-30.4,7.15-18.35,19.2l30.83,30.8H80v-40C80,555.6,53.33,556.16,53.33,573.33Zm0-233.65C24,339.68,0,356.53,0,377.12v37.44C0,435.15,24,452,53.33,452h560c29.34,0,53.34-16.85,53.34-37.44V377.12c0-20.59-24-37.44-53.34-37.44Zm0-236.88C24,102.8,0,119.65,0,140.24v37.44c0,20.59,24,37.44,53.33,37.44h560c29.34,0,53.34-16.85,53.34-37.44V140.24c0-20.59-24-37.44-53.34-37.44Zm359,467.59c-18.55,0-33.72,16.85-33.72,37.44v37.44c0,20.59,15.17,37.44,33.72,37.44h354c18.55,0,33.72-16.85,33.72-37.44V607.83c0-20.59-15.17-37.44-33.72-37.44Z"
+                                    transform="translate(0 -102.8)" />
+                            </svg>
+                        </i>
+                        Submenu
+                    </div>
+                    <i class="svg-submenu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M7.247 11.14 2.451 6.342a1 1 0 0 1 1.415-1.415L8 8.586l4.134-4.134a1 1 0 1 1 1.415 1.415l-4.796 4.798a1 1 0 0 1-1.506 0z" />
+                        </svg>
+                    </i>
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#" class="active-submenu">
+                            <div class="content-link menu-level-1">
+                                <i class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        viewBox="0 0 800 590.21">
+                                        <path
+                                            d="M53.33,573.33v53.34c0,7,6.35,13.33,13.34,13.33H248.35l-30.86,30c-12.8,13.25,7.47,30.85,18.35,19.2l53.33-53.33c5.15-5,5.15-14.24,0-19.2l-53.33-53.34c-10.59-10.58-30.4,7.15-18.35,19.2l30.83,30.8H80v-40C80,555.6,53.33,556.16,53.33,573.33Zm0-233.65C24,339.68,0,356.53,0,377.12v37.44C0,435.15,24,452,53.33,452h560c29.34,0,53.34-16.85,53.34-37.44V377.12c0-20.59-24-37.44-53.34-37.44Zm0-236.88C24,102.8,0,119.65,0,140.24v37.44c0,20.59,24,37.44,53.33,37.44h560c29.34,0,53.34-16.85,53.34-37.44V140.24c0-20.59-24-37.44-53.34-37.44Zm359,467.59c-18.55,0-33.72,16.85-33.72,37.44v37.44c0,20.59,15.17,37.44,33.72,37.44h354c18.55,0,33.72-16.85,33.72-37.44V607.83c0-20.59-15.17-37.44-33.72-37.44Z"
+                                            transform="translate(0 -102.8)" />
+                                    </svg>
+                                </i>
+                                Submenu 1
+                            </div>
+                            <i class="svg-submenu">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 6.342a1 1 0 0 1 1.415-1.415L8 8.586l4.134-4.134a1 1 0 1 1 1.415 1.415l-4.796 4.798a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">
+                                    <div class="content-link menu-level-3">
+                                        <i class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                                <path
+                                                    d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                                            </svg>
+                                        </i>
+                                        Opcion 1
+                                    </div>
+                                    <i class="selected">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                                        </svg>
+                                    </i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="content-link menu-level-3">
+                                        <i class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                                <path
+                                                    d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                                            </svg>
+                                        </i>
+                                        Opcion 2
+                                    </div>
+                                    <i class="selected">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                                        </svg>
+                                    </i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="content-link">
+                                <i class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-house-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                        <path
+                                            d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                                    </svg>
+                                </i>
+                                Opcion 2
+                            </div>
+                            <i class="selected">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="content-link">
+                                <i class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-house-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
+                                        <path
+                                            d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z" />
+                                    </svg>
+                                </i>
+                                Opcion 3
+                            </div>
+                            <i class="selected">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                                </svg>
+                            </i>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Segundo</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tercero</li>
+            </ol>
+        </nav>
+        <section class="main-content">
+            <div class="title-content">
+                <h1>Usuarios</h1>
+                <button id="openModalButton" class="btn btn-primary d-flex justify-content-center aling-items-center">
+                    <i class="d-flex justify-content-center aling-items-center mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                        </svg>
+                    </i>
+                    Agregar registro
+                </button>
+            </div>
+            <div class="table-content">
+                <table id="table" class="table table-bordered table-striped">
+                    <thead class="table-header">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Estado</th>
+                            <th>Teléfono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Juan Pérez</td>
+                            <td>juan.perez@example.com</td>
+                            <td>
+                                <p class="tag bg-success text-white">Activo</p>
+                            </td>
+                            <td>+54 11 1234 5678</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>María López</td>
+                            <td>maria.lopez@example.com</td>
+                            <td>
+                                <p class="tag bg-success text-white">Activo</p>
+                            </td>
+                            <td>+54 11 9876 5432</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Carlos Gómez</td>
+                            <td>carlos.gomez@example.com</td>
+                            <td>
+                                <p class="tag bg-danger text-white">Inactivo</p>
+                            </td>
+                            <td>+54 11 4567 8910</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <footer class="footer">
+            <p>&copy; 2025 Panel. Todos los derechos reservados.</p>
+        </footer>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-lg">
+                <div class="modal-header">
+                    <div class="group-modal-header">
+                        <h5 class="modal-title">Título del Modal</h5>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <p class="notes"><strong>Nota:</strong> Los campos marcados con <span>*</span> son
+                        obligatorios.
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-4 col col-12">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="username" class="form-label">Nombre de usuario: <span
+                                            class="required">*</span></label>
+                                    <input type="text" id="username" name="username" class="form-control"
+                                        placeholder="Ingresa tu nombre">
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="username" class="form-label">Nombre de usuario:</label>
+                                    <input type="text" id="username" name="username" class="form-control"
+                                        placeholder="Ingresa tu nombre">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Correo Electrónico:</label>
+                                <input type="email" id="email" name="email" class="form-control"
+                                    placeholder="Ingresa tu correo">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="form-group">
+                                <label for="select" class="form-label">Selecciona una opción:</label>
+                                <div class="input-group">
+                                    <select id="select" class="form-select">
+                                        <option selected>Elige...</option>
+                                        <option value="1">Opción 1</option>
+                                        <option value="2">Opción 2</option>
+                                        <option value="3">Opción 3</option>
+                                    </select>
+                                    <div class="input-group-text p-0">
+                                        <a href="#" title="Agregar"
+                                            class="d-flex justify-content-center aling-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                                <path
+                                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="form-label" for="inputGroup">Nombre de usuario:</label>
+                            <div class="input-group">
+                                <div class="input-group-text">@</div>
+                                <input type="text" id="inputGroup" class="form-control" placeholder="Nombre de usuario">
+                                <div class="input-group-text p-0">
+                                    <a href="#" title="Agregar"
+                                        class="d-flex justify-content-center aling-items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                            <path
+                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer-base">
+                    <button class="btn btn-secondary modal-close">Cerrar</button>
+                    <button class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/datatables/datatables.min.js"></script>
+</body>
+
+</html>
