@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     new DataTable('#table', {
         language: {
-            url: '../vendor/datatables/lang/es-ES.json'
+            url: '/administrative_panel/vendor/datatables/lang/es-ES.json'
         },
         responsive: true,
         pageLength: 10,
