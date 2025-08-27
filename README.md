@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="#-features">✨ Features</a> •
-  <a href="#-technologies">🛠 Technologies</a> •
+  <a href="#-technologies">🛠 Technologies</a>
 </p>  
 
 ---
@@ -35,5 +35,3 @@
 ##  📄 License
 
 This project is released under the MIT License.
-## 📂 Project Structure
-
